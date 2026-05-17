@@ -149,8 +149,12 @@ exports.handler = async (event) => {
     const vibe_label = ai.vibe_label || 'PURE RESTRAINT';
     const kept_for = ai.kept_for || '';
 
-    // Fire and forget save — don't block response if Turso fails
-    saveToTurso({ item, price, store, reason, blurb, vibe_label, kept_for }).catch(e => console.error('save err', e));
+    // Await save so it completes before the serverless function exits
+    try {
+      await saveToTurso({ item, price, store, reason, blurb, vibe_label, kept_for });
+    } catch (e) {
+      console.error('save err', e);
+    }
 
     return json(200, { blurb, vibe_label, kept_for });
   } catch (err) {
