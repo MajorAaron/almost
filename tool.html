@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anti-Receipt Generator — Almost</title>
+  <meta name="description" content="Turn the things you almost bought into shareable proof of restraint. Free AI-generated anti-receipts for the no-buy 2026 generation." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand">
+      <span class="brand-mark">×</span>
+      <span class="brand-name">Almost</span>
+    </a>
+    <nav>
+      <a href="/" class="nav-link">Home</a>
+      <a href="#wall" class="nav-link">Wall</a>
+    </nav>
+  </header>
+
+  <main class="tool-wrap">
+    <section class="hero-mini">
+      <h1>The Anti-Receipt Generator</h1>
+      <p class="lede">Tell me what you <em>almost</em> bought. I'll print the receipt for not buying it.</p>
+    </section>
+
+    <section class="generator">
+      <div class="form-card">
+        <form id="receipt-form" autocomplete="off">
+          <div class="field">
+            <label for="item">What were you about to buy?</label>
+            <input type="text" id="item" name="item" placeholder="e.g. Diptyque candle, Aritzia hoodie, AirPods Max" required maxlength="80" />
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="price">Price you didn't pay</label>
+              <div class="price-input">
+                <span class="currency">$</span>
+                <input type="number" id="price" name="price" placeholder="68" min="1" max="100000" step="1" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="store">From (optional)</label>
+              <input type="text" id="store" name="store" placeholder="Sephora, Amazon, Etsy…" maxlength="40" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="reason">Why you skipped <span class="hint">(one line — be honest)</span></label>
+            <input type="text" id="reason" name="reason" placeholder="I already own three. The shelf can't take more." required maxlength="140" />
+          </div>
+
+          <button type="submit" id="submit-btn" class="cta-btn">
+            <span class="btn-label">Print the anti-receipt</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+          <p class="microcopy">Free. No login. One serverless function and a lot of feelings.</p>
+        </form>
+      </div>
+
+      <div class="result-pane" id="result-pane" aria-live="polite">
+        <div class="placeholder">
+          <div class="placeholder-card">
+            <div class="ph-line ph-line-1"></div>
+            <div class="ph-line ph-line-2"></div>
+            <div class="ph-line ph-line-3"></div>
+          </div>
+          <p class="placeholder-text">Your anti-receipt will appear here.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="totals">
+      <div class="total-card">
+        <span class="total-label">This session, you've kept</span>
+        <span class="total-amount" id="kept-total">$0</span>
+        <span class="total-detail" id="kept-count">0 anti-receipts printed</span>
+      </div>
+    </section>
+
+    <section class="email-capture" id="capture">
+      <div class="capture-inner">
+        <h2>Get your monthly Anti-Haul recap</h2>
+        <p>Every month we'll bundle your skips into one beautiful card, narrated, ready to post. No spam. One email per month.</p>
+        <form id="subscribe-form" class="subscribe-form">
+          <input type="email" id="email" name="email" placeholder="you@where-you-actually-read.com" required />
+          <button type="submit" class="cta-btn ghost">Save my restraint</button>
+        </form>
+        <p class="subscribe-status" id="subscribe-status"></p>
+      </div>
+    </section>
+
+    <section class="wall" id="wall">
+      <h2>Recent anti-receipts</h2>
+      <p class="wall-sub">Last 12 from people who skipped. Names redacted. Vibes preserved.</p>
+      <div class="wall-grid" id="wall-grid"></div>
+    </section>
+
+    <section class="how">
+      <h2>How this works</h2>
+      <ol class="how-steps">
+        <li><strong>You almost buy something.</strong> A candle, a hoodie, an AirPods Max — whatever was in the cart at 11:47pm.</li>
+        <li><strong>You close the tab.</strong> Or put it back on the shelf. Or screenshot it for "later."</li>
+        <li><strong>You come here.</strong> Paste the item, the price, why you skipped.</li>
+        <li><strong>We mint an anti-receipt.</strong> A small AI generates a poetic, shareable card. You save the image. The algorithm catches up.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built by <a href="https://majorsolutions.studio">Major Solutions Studio</a> · An anti-haul for the no-buy 2026 generation</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

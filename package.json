@@ -1,0 +1,8 @@
+{
+  "name": "almost",
+  "version": "1.0.0",
+  "description": "The receipt for everything you didn't buy.",
+  "private": true,
+  "scripts": {},
+  "dependencies": {}
+}
